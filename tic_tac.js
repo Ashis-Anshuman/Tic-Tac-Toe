@@ -22,5 +22,29 @@ butt.forEach((box)=>{
             turn = true;
         }
         box.disabled = true;
+        winner();
     })
 })
+
+let winner = () =>{
+    win.forEach((part)=>{
+        let first = butt.item(part[0]).innerText;
+        let second = butt.item(part[1]).innerText
+        let third = butt.item(part[2]).innerText
+        if(first != "" && second != "" && third != ""){
+            if(first == second && second == third){
+                console.log("WINER");
+                // butt.forEach((em)=>{
+                //     em.innerText = "";
+                // })
+            }
+        }
+    })
+    // for(let i = 0; i<=win.length; i++){
+    //     for(let j = 0; j <=win[i].length; j++){
+    //         if(butt.item(win[i][j]).innerText===){
+
+    //         }
+    //     }
+    // }
+}
