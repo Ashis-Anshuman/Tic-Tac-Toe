@@ -1,4 +1,5 @@
 let butt = document.querySelectorAll(".box");
+let msg = document.querySelector("p");
 
 let win = [
     [0,1,2],
@@ -12,13 +13,23 @@ let win = [
 ]
 let turn = true;
 
+let reset = () =>{
+    butt.forEach((em)=>{
+        em.innerText = "";
+        em.disabled = false;
+        msg.classList.add('class', 'hide');
+    })
+}
+
 butt.forEach((box)=>{
     box.addEventListener('click',()=>{
         if(turn){
             box.innerText = "X";
+            box.style.color = "red";
             turn = false;
         }else{
             box.innerText = "O";
+            box.style.color = "green";
             turn = true;
         }
         box.disabled = true;
@@ -29,22 +40,17 @@ butt.forEach((box)=>{
 let winner = () =>{
     win.forEach((part)=>{
         let first = butt.item(part[0]).innerText;
-        let second = butt.item(part[1]).innerText
-        let third = butt.item(part[2]).innerText
+        let second = butt.item(part[1]).innerText;
+        let third = butt.item(part[2]).innerText;
+
         if(first != "" && second != "" && third != ""){
             if(first == second && second == third){
-                console.log("WINER");
-                // butt.forEach((em)=>{
-                //     em.innerText = "";
-                // })
+                msg.innerText = `Winer is ${first}`;
+                msg.classList.remove('class', 'hide');
+                butt.forEach((box)=>{
+                    box.disabled = true;
+                })
             }
         }
     })
-    // for(let i = 0; i<=win.length; i++){
-    //     for(let j = 0; j <=win[i].length; j++){
-    //         if(butt.item(win[i][j]).innerText===){
-
-    //         }
-    //     }
-    // }
 }
